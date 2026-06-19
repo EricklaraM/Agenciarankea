@@ -1,0 +1,46 @@
+<header class="navbar" role="banner">
+  <nav class="container navbar__inner" aria-label="Navegación principal">
+
+    <!-- Logo -->
+    <a href="/" class="navbar__logo" aria-label="Agencia Rankea - Inicio">
+      Rankea<span>.</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="navbar__links" role="list">
+      {{ range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}"
+           {{ if eq $.RelPermalink .URL }}class="active" aria-current="page"{{ end }}>
+          {{ .Name }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+
+    <!-- CTA -->
+    <a href="{{ .Site.Params.ctaURL }}" class="btn btn--primary navbar__cta">
+      {{ .Site.Params.ctaText }}
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar__toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="mobile-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile nav overlay -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Menú móvil">
+  {{ range .Site.Menus.main }}
+  <a href="{{ .URL }}">{{ .Name }}</a>
+  {{ end }}
+  <a href="{{ .Site.Params.ctaURL }}" class="btn btn--primary btn--lg" style="margin-top:1rem">
+    {{ .Site.Params.ctaText }}
+  </a>
+</nav>
