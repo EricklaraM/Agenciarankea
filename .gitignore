@@ -1,0 +1,29 @@
+# Hugo output
+/public/
+/resources/_gen/
+
+# Hugo cache
+/.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (si usas PostCSS o similar)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Variables de entorno locales
+.env
+.env.local
+
+# Logs
+*.log
