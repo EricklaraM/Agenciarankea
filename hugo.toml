@@ -1,10 +1,11 @@
 baseURL = "https://agenciarankea.cl/"
 languageCode = "es-CL"
 title = "Agencia Rankea | SEO, Ads & Crecimiento Digital en Chile"
-theme = ""                          # sin tema externo, todo custom
 enableRobotsTXT = true
 enableGitInfo    = false
-paginate         = 6
+
+[pagination]
+  pagerSize = 6
 
 [build]
   writeStats = true
