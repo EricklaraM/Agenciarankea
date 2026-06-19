@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO -->
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Params.author }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta name="keywords" content="{{ with .Params.keywords }}{{ . }}{{ else }}{{ .Site.Params.keywords }}{{ end }}" />
+  <meta name="author" content="{{ .Site.Params.author }}" />
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ .Site.Params.author }}" />
+  {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}" />{{ end }}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ .Title }}" />
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- CSS -->
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+  <!-- GTM (si está configurado) -->
+  {{ with .Site.Params.gtmID }}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ . }}');</script>
+  {{ end }}
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Agencia Rankea",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": "{{ "img/logo.svg" | absURL }}",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "{{ .Site.Params.phone }}",
+      "contactType": "customer service",
+      "areaServed": "CL",
+      "availableLanguage": "Spanish"
+    },
+    "sameAs": [
+      "{{ .Site.Params.social.instagram }}",
+      "{{ .Site.Params.social.linkedin }}"
+    ]
+  }
+  </script>
+</head>
+<body>
+  {{ if .Site.Params.gtmID }}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Params.gtmID }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {{ end }}
+
+  <!-- Skip link -->
+  <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Saltar al contenido principal</a>
+
+  {{ partial "navbar.html" . }}
+
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <!-- JS -->
+  <script>
+  // Navbar scroll effect
+  const nav = document.querySelector('.navbar');
+  const toggle = document.querySelector('.navbar__toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.classList.toggle('open');
+      mobileNav.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.setAttribute('aria-expanded', open);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    el.classList.add('fade-up');
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+  </script>
+</body>
+</html>
