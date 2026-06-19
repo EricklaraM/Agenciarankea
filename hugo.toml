@@ -1,0 +1,73 @@
+baseURL = "https://agenciarankea.cl/"
+languageCode = "es-CL"
+title = "Agencia Rankea | SEO, Ads & Crecimiento Digital en Chile"
+theme = ""                          # sin tema externo, todo custom
+enableRobotsTXT = true
+enableGitInfo    = false
+paginate         = 6
+
+[build]
+  writeStats = true
+
+[minify]
+  disableCSS   = false
+  disableHTML  = false
+  disableJS    = false
+  disableJSON  = false
+  disableSVG   = false
+  disableXML   = false
+  minifyOutput = true
+
+[outputs]
+  home    = ["HTML", "RSS"]
+  page    = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[params]
+  description  = "Agencia de marketing digital en Chile especializada en SEO, Publicidad en Meta, Google y TikTok, Desarrollo Web y Automatizaciones."
+  keywords     = "agencia marketing digital chile, seo chile, google ads chile, meta ads, desarrollo web shopify chile"
+  author       = "Agencia Rankea"
+  email        = "hola@agenciarankea.cl"
+  phone        = "+56 9 XXXX XXXX"
+  address      = "Santiago, Chile"
+  formspreeID  = "YOUR_FORMSPREE_ID"            # ← reemplazar
+  gtmID        = ""                              # ← opcional: GTM-XXXXXXX
+
+  # CTA global
+  ctaText = "Agendar Diagnóstico Gratuito"
+  ctaURL  = "/contacto"
+
+  # Hero
+  heroTitle    = "Crece en digital.\nSin vueltas."
+  heroSubtitle = "SEO, Publicidad y Desarrollo Web para empresas chilenas que quieren resultados reales — no métricas bonitas."
+
+  # Social
+  [params.social]
+    instagram = "https://instagram.com/agenciarankea"
+    linkedin  = "https://linkedin.com/company/agenciarankea"
+    whatsapp  = "https://wa.me/569XXXXXXXX"
+
+[menu]
+  [[menu.main]]
+    name       = "Servicios"
+    url        = "/servicios"
+    weight     = 1
+  [[menu.main]]
+    name       = "Casos de Éxito"
+    url        = "/blog"
+    weight     = 2
+  [[menu.main]]
+    name       = "Contacto"
+    url        = "/contacto"
+    weight     = 3
+
+[taxonomies]
+  category = "categorias"
+  tag      = "etiquetas"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github-dark"
