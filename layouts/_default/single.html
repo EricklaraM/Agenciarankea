@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="section" style="padding-top:calc(var(--space-24) + 80px)">
+  <div class="container">
+    <header style="margin-bottom:var(--space-12);max-width:720px">
+      {{ with .Params.category }}<span class="badge">{{ . }}</span>{{ end }}
+      <h1 style="margin-top:var(--space-4)">{{ .Title }}</h1>
+      {{ with .Description }}<p style="font-size:1.15rem;color:var(--ink-200);margin-top:var(--space-4)">{{ . }}</p>{{ end }}
+      {{ if .IsPage }}
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:1.5rem;font-size:.875rem;color:var(--ink-400)">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+        {{ with .ReadingTime }}<span>· {{ . }} min de lectura</span>{{ end }}
+      </div>
+      {{ end }}
+    </header>
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+
+<style>
+.prose { max-width: 720px; }
+.prose h2 { font-size: 1.75rem; margin: 2.5rem 0 1rem; }
+.prose h3 { font-size: 1.25rem; margin: 2rem 0 .75rem; }
+.prose p  { margin-bottom: 1.25rem; color: var(--ink-200); font-size: 1.0625rem; line-height: 1.75; }
+.prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; color: var(--ink-200); }
+.prose li { margin-bottom: .5rem; }
+.prose ul li { list-style: disc; }
+.prose ol li { list-style: decimal; }
+.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose strong { color: var(--text-head); font-weight: 600; }
+.prose code { background: var(--ink-700); padding: .15em .4em; border-radius: 4px; font-size: .9em; }
+.prose pre { background: var(--ink-800); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
+.prose blockquote { border-left: 3px solid var(--accent); padding-left: 1.25rem; margin: 1.5rem 0; color: var(--ink-200); font-style: italic; }
+</style>
+{{ end }}
