@@ -1,0 +1,7 @@
+# Redirects para Cloudflare Pages
+# Formato: /ruta-origen  /ruta-destino  código
+
+/inicio           /           301
+/home             /           301
+/contactanos      /contacto   301
+/blog/index.html  /blog/      301
