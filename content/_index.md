@@ -1,5 +1,5 @@
 ---
-title: "Agencia Rankea | SEO, Ads & Desarrollo Web en Chile"
-description: "Agencia de marketing digital en Chile especializada en SEO, Publicidad Performance (Meta, Google, TikTok), Desarrollo Web y Automatizaciones."
+title: "Agencia Rankea | Tiendas online y SEO ecommerce en Chile"
+description: "Agencia ecommerce para pymes chilenas: creamos, posicionamos y automatizamos tiendas online en WooCommerce para que vendas más, todos los días."
 type: "home"
 ---
