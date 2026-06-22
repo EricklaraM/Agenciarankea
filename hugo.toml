@@ -1,6 +1,6 @@
 baseURL = "https://agenciarankea.cl/"
 languageCode = "es-CL"
-title = "Agencia Rankea | SEO, Ads & Crecimiento Digital en Chile"
+title = "Agencia Rankea | Tiendas online, SEO ecommerce y automatización en Chile"
 enableRobotsTXT = true
 enableGitInfo    = false
 
@@ -25,8 +25,8 @@ enableGitInfo    = false
   section = ["HTML", "RSS"]
 
 [params]
-  description  = "Agencia de marketing digital en Chile especializada en SEO, Publicidad en Meta, Google y TikTok, Desarrollo Web y Automatizaciones."
-  keywords     = "agencia marketing digital chile, seo chile, google ads chile, meta ads, desarrollo web shopify chile"
+  description  = "Agencia ecommerce en Chile para pymes: creamos, posicionamos y automatizamos tiendas online en WooCommerce. Más visitas, más conversión y más ventas."
+  keywords     = "agencia ecommerce chile, tiendas online woocommerce, seo ecommerce chile, automatizacion ventas, desarrollo tienda online chile, pymes ecommerce"
   author       = "Agencia Rankea"
   email        = "hola@agenciarankea.cl"
   phone        = "+56 9 XXXX XXXX"
@@ -35,12 +35,12 @@ enableGitInfo    = false
   gtmID        = ""                              # ← opcional: GTM-XXXXXXX
 
   # CTA global
-  ctaText = "Agendar Diagnóstico Gratuito"
+  ctaText = "Cotiza tu tienda"
   ctaURL  = "/contacto"
 
   # Hero
-  heroTitle    = "Crece en digital.\nSin vueltas."
-  heroSubtitle = "SEO, Publicidad y Desarrollo Web para empresas chilenas que quieren resultados reales — no métricas bonitas."
+  heroTitle    = "Rankea más alto.\nVende más."
+  heroSubtitle = "Creamos, posicionamos y automatizamos tiendas online para pymes chilenas. Más visitas, más conversión y más ventas."
 
   # Social
   [params.social]
